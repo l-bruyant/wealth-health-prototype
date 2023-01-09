@@ -1,0 +1,24 @@
+[
+    {
+        "firstName": "Luc",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucas",
+        "lastName": "Testingo",
+        "dateOfBirth": "01/03/2023",
+        "startDate": "01/30/2023",
+        "department": "Legal",
+        "street": "15 Str",
+        "city": "Bordeaux",
+        "state": "AZ",
+        "zipCode": "44770"
+    }
+]
