@@ -1,4 +1,5 @@
 import React from 'react'
+import { ImportedDateKeeper } from './imports/datePicker'
 
 /**
 *
@@ -31,11 +32,11 @@ export default function RegisterForm () {
                         </div>
                         <div className='form-question'>
                             <label htmlFor='startDate'>START DATE</label>
-                            <input type='date' name='startDate' id='startDate' required/>
+                            <ImportedDateKeeper id='startDate' name='startDate'/>
                         </div>
                         <div className='form-question'>
                             <label htmlFor='birthDate'>DATE OF BIRTH</label>
-                            <input type='date' name='birthDate' id='birthDate' required/>
+                            <ImportedDateKeeper id='birthDate' name='birthDate'/>
                         </div>
                     </div>
                     

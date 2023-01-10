@@ -151,15 +151,18 @@ header .active-nav {
   border: solid 1px #F2F2F2;
   height: 32px;
   border-radius: 4px;
+  font-size: 10px;
   font-family: lato, Arial, Helvetica, sans-serif;
   padding: 0px 8px;
   color: #666666;
+  width: 100%;
 }
 
 .form-question select {
   border: solid 1px #F2F2F2;
   height: 32px;
   border-radius: 4px;
+  font-size: 10px;
   font-family: lato, Arial, Helvetica, sans-serif;
   padding: 0px 8px;
   color: #666666;

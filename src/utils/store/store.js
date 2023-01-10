@@ -19,7 +19,7 @@ const persistConfig = {
 }
 
 const reducer = combineReducers({
-    userToken: employeesListReducer
+    employeesList: employeesListReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer)
