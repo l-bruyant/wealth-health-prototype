@@ -1,5 +1,14 @@
-import React from 'react'
-import { ImportedDateKeeper } from './imports/datePicker'
+import React, { useState } from "react";
+import { states } from "../data/statesList";
+import { jobs } from "../data/jobsList";
+
+//datepicker
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+//dropdown
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 /**
 *
@@ -11,12 +20,23 @@ import { ImportedDateKeeper } from './imports/datePicker'
 
 export default function RegisterForm () {
 
+    // For custom date picker
+    const [startStartDate, setStartStartDate] = useState(new Date());
+    const [birthStart, setBirthStartDate] = useState(new Date());
+
+    // For custom select
+    const stateOptions = states
+    const defaulStatetOption = stateOptions[0];
+
+    const jobOptions = jobs
+    const defauljobOption = jobOptions[0];
+
     return (
         <div className='register-form-wrapper'>
             <h2>
                 Fill employee information to add them to the database
             </h2>
-            <form action="" method="post">
+            <form action="" method="post" id='newEmployeeForm'>
                 <div className='form-group'>
                     <h3 className='form-cat-title'>
                         IDENTITY
@@ -32,11 +52,11 @@ export default function RegisterForm () {
                         </div>
                         <div className='form-question'>
                             <label htmlFor='startDate'>START DATE</label>
-                            <ImportedDateKeeper id='startDate' name='startDate'/>
+                            <DatePicker name='startDate' id='startDate' selected={startStartDate} onChange={(date = Date) => setStartStartDate(date)} />
                         </div>
                         <div className='form-question'>
                             <label htmlFor='birthDate'>DATE OF BIRTH</label>
-                            <ImportedDateKeeper id='birthDate' name='birthDate'/>
+                            <DatePicker name='birthDate' id='birthDate' selected={birthStart} onChange={(date = Date) => setBirthStartDate(date)} />
                         </div>
                     </div>
                     
@@ -47,7 +67,7 @@ export default function RegisterForm () {
                     </h3>
                     <div className='form-questions-group'>
                         <div className='form-question'>
-                            <label htmlFor='firstName'>STREET</label>
+                            <label htmlFor='street'>STREET</label>
                             <input type='text' name='street' id='street' required/>
                         </div>
                         <div className='form-question'>
@@ -56,10 +76,7 @@ export default function RegisterForm () {
                         </div>
                         <div className='form-question'>
                             <label htmlFor='state'>STATE</label>
-                            <select name='state' id='state' required>
-                                <option value="State 1">State 1</option>
-                                <option value="State 2">State 2</option>
-                            </select>
+                            <Dropdown name='state' id='state' required options={stateOptions} value={defaulStatetOption} placeholder="Select option" />
                         </div>
                         <div className='form-question'>
                             <label htmlFor='zip'>ZIP CODE</label>
@@ -75,10 +92,7 @@ export default function RegisterForm () {
                     <div className='form-questions-group'>
                         <div className='form-question wide-questions'>
                             <label htmlFor='department'>DEPARTMENT</label>
-                            <select name='department' id='department' required>
-                                <option value="Department 1">Department 1</option>
-                                <option value="Department 2">Department 2</option>
-                            </select>
+                            <Dropdown name='department' id='department' required options={jobOptions} value={defauljobOption} placeholder="Select option" />
                         </div>
                     </div>
                     

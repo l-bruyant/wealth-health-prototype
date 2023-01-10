@@ -168,6 +168,34 @@ header .active-nav {
   color: #666666;
 }
 
+#newEmployeeForm .Dropdown-control {
+    border: solid 1px #F2F2F2;
+    height: 32px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-family: lato, Arial, Helvetica, sans-serif;
+    padding: 0px 8px;
+    color: #666666;
+    display: flex;
+    align-items: center;
+}
+
+#newEmployeeForm .Dropdown-option {
+  font-size: 10px;
+  font-family: lato, Arial, Helvetica, sans-serif;
+  color: #666666;
+}
+
+#newEmployeeForm .react-datepicker__day--selected {
+  background-color: rgb(54,203,158);
+}
+
+#newEmployeeForm .react-datepicker {
+  font-size: 10px;
+  color: #666666;
+  font-family: lato, Arial, Helvetica, sans-serif;
+}
+
 .wide-questions {
   width: 100%;
 }
