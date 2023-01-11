@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { states } from "../data/statesList";
 import { jobs } from "../data/jobsList";
+import { useNavigate } from 'react-router-dom'
+
 
 //datepicker
 import DatePicker from "react-datepicker";
@@ -10,6 +12,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
+//modal
+import Modal from 'react-modal';
+
+import { saveEmployee } from "../utils/saveEmployee";
+
+import { useDispatch } from 'react-redux'
+import { addEmployee } from "../utils/store/employeesListSlice";
+
+
 /**
 *
 * Displays a registration form
@@ -17,6 +28,18 @@ import 'react-dropdown/style.css';
 * @function registerForm
 *
 */
+
+Modal.setAppElement('#root');
+const customModalStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+    },
+};
 
 export default function RegisterForm () {
 
@@ -26,37 +49,63 @@ export default function RegisterForm () {
 
     // For custom select
     const stateOptions = states
-    const defaulStatetOption = stateOptions[0];
-
+    const defaultStateOption = stateOptions[0];
     const jobOptions = jobs
-    const defauljobOption = jobOptions[0];
+    const defaultjobOption = jobOptions[0];
+
+    const dispatch = useDispatch()
+
+    // For Modal 
+    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const navigate = useNavigate()
+
+    function goToEmployeesList() {
+        navigate('/employees-list') 
+    }
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+        location.reload() 
+    }
+    
+    // For form submission
+    const handleSubmit = async e => {
+        e.preventDefault()
+        const newEmployee = saveEmployee()
+        dispatch(addEmployee(newEmployee))
+        openModal()
+    }
 
     return (
         <div className='register-form-wrapper'>
             <h2>
                 Fill employee information to add them to the database
             </h2>
-            <form action="" method="post" id='newEmployeeForm'>
+            <form id='newEmployeeForm' onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <h3 className='form-cat-title'>
                         IDENTITY
                     </h3>
                     <div className='form-questions-group'>
                         <div className='form-question'>
-                            <label htmlFor='firstName'>FIRST NAME</label>
-                            <input type='text' name='firstName' id='firstName' required/>
+                            <label htmlFor='first-name'>FIRST NAME</label>
+                            <input type='text' name='first-name' id='first-name' required/>
                         </div>
                         <div className='form-question'>
-                            <label htmlFor='lastName'>LAST NAME</label>
-                            <input type='text' name='lastName' id='lastName' required/>
+                            <label htmlFor='last-name'>LAST NAME</label>
+                            <input type='text' name='last-name' id='last-name' required/>
                         </div>
                         <div className='form-question'>
-                            <label htmlFor='startDate'>START DATE</label>
-                            <DatePicker name='startDate' id='startDate' selected={startStartDate} onChange={(date = Date) => setStartStartDate(date)} />
+                            <label htmlFor='start-date'>START DATE</label>
+                            <DatePicker name='start-date' id='start-date' selected={startStartDate} onChange={(date = Date) => setStartStartDate(date)} />
                         </div>
                         <div className='form-question'>
-                            <label htmlFor='birthDate'>DATE OF BIRTH</label>
-                            <DatePicker name='birthDate' id='birthDate' selected={birthStart} onChange={(date = Date) => setBirthStartDate(date)} />
+                            <label htmlFor='date-of-birth'>DATE OF BIRTH</label>
+                            <DatePicker name='date-of-birth' id='date-of-birth' selected={birthStart} onChange={(date = Date) => setBirthStartDate(date)} />
                         </div>
                     </div>
                     
@@ -74,13 +123,13 @@ export default function RegisterForm () {
                             <label htmlFor='city'>CITY</label>
                             <input type='text' name='city' id='city' required/>
                         </div>
-                        <div className='form-question'>
+                        <div className='form-question' id='state-dropdown-wrapper'>
                             <label htmlFor='state'>STATE</label>
-                            <Dropdown name='state' id='state' required options={stateOptions} value={defaulStatetOption} placeholder="Select option" />
+                            <Dropdown name='state' id='state' required options={stateOptions} value={defaultStateOption} placeholder="Select option" />
                         </div>
                         <div className='form-question'>
-                            <label htmlFor='zip'>ZIP CODE</label>
-                            <input type='text' name='zip' id='zip' required/>
+                            <label htmlFor='zip-code'>ZIP CODE</label>
+                            <input type='text' name='zip-code' id='zip-code' required/>
                         </div>
                     </div>
                     
@@ -90,15 +139,25 @@ export default function RegisterForm () {
                         WORK DETAILS
                     </h3>
                     <div className='form-questions-group'>
-                        <div className='form-question wide-questions'>
+                        <div className='form-question wide-questions' id='department-dropdown-wrapper'>
                             <label htmlFor='department'>DEPARTMENT</label>
-                            <Dropdown name='department' id='department' required options={jobOptions} value={defauljobOption} placeholder="Select option" />
+                            <Dropdown name='department' id='department' required options={jobOptions} value={defaultjobOption} placeholder="Select option" />
                         </div>
                     </div>
                     
                 </div>
                 <button className='form-save-button'>Save</button>
             </form>
+            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customModalStyles} contentLabel="User registered" >
+                <div className="modal-content-wrapper">
+                    <div className='modal-text'>Employee correctly registered 👏</div>
+                    <div className='modal-text'>What do you want to do next?</div>
+                    <div className="modal-buttons-wrapper">
+                        <button onClick={goToEmployeesList} className="modal-button green-button">See the employees list</button>
+                        <button onClick={closeModal} className="modal-button grey-button">Add an other new employee</button>
+                    </div>
+                </div>
+            </Modal>
         </div>
     )
 }

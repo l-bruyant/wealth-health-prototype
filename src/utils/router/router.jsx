@@ -12,10 +12,10 @@ export const router = createBrowserRouter([
         //         index: true,
         //         element: <LandingPage />,
         //     },
-        //     {
-        //         path: 'employees-list',
-        //         element: <ListPage />,
-        //     },
+            {
+                path: 'employees-list',
+                element: <div>WIP</div>,
+            },
             {
                 path: 'new-employee',
                 element: <NewEmployeePage />,

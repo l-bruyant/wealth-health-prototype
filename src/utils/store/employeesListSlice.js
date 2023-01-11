@@ -8,7 +8,7 @@ export const employeesListSlice = createSlice({
     },
     reducers: {
         addEmployee: (state, action) => {
-            state.value = action.payload
+            state.value.push(action.payload)
         }
     }
 })
