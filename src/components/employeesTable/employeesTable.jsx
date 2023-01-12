@@ -4,12 +4,16 @@ import { useSelector } from 'react-redux'
 import TableHeader from './tableHeader/tableHeader'
 import Pagination from './pagination/pagination'
 
+//dropdown
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
+
 export default function EmployeesTable () {
 
     const [employees, setEmployees ] = useState([])
     const [totalItems, setTotalItems] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
-    const ITEMS_PER_PAGE = 10
+    const [ITEMS_PER_PAGE, setITEMS_PER_PAGE] = useState(10)
     const firstItemIndexDisplayed = (currentPage - 1) * ITEMS_PER_PAGE
     const lastItemIndexDisplayed = (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
 
@@ -18,6 +22,10 @@ export default function EmployeesTable () {
     function createEmployeeKey (employee) {
         const employeeKey = employee.firstName + employee.lastName + employee.dateOfBirth
         return employeeKey
+    }
+
+    function handlePaginationChange (e) {
+        setITEMS_PER_PAGE(e.value)
     }
 
     const headers = [
@@ -32,23 +40,37 @@ export default function EmployeesTable () {
         { name: "ZIPCODE", field: "zipCode" },
     ]
 
+    const paginationOptions = ['5', '10', '20']
+
+    const defaultPaginationOption = paginationOptions[1]
+
     useEffect( () => {
         setEmployees(initialEmployeesList)
-    } )
+    })
 
     const employeesData = useMemo ( () => {
         let computedEmployeesData = employees
-        console.log(computedEmployeesData)
         setTotalItems(computedEmployeesData.length)
         let slicedData = computedEmployeesData.slice(
             firstItemIndexDisplayed,
             lastItemIndexDisplayed
         )
         return slicedData
-    }, [employees, currentPage])
+    }, [employees, currentPage, ITEMS_PER_PAGE])
 
     return (
         <>
+            <div className="table-options-area">
+                <div className='pagination-settings-container'>
+                    Show
+                    <Dropdown onChange={handlePaginationChange} name='pagination-settings' id='pagination-settings' options={paginationOptions} value={defaultPaginationOption}/>
+                    Results
+                </div>
+                <div className='search-container'>
+                    <label htmlFor='search'>Search</label>
+                    <input id="search" name="search" type="search" placeholder='search employee'/>
+                </div>
+            </div>
             <table className="employees-table">
                 <TableHeader headers={headers} />
                 <tbody>

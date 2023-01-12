@@ -1,5 +1,82 @@
 [
     {
+        "firstName": "Joshua",
+        "lastName": "Jones",
+        "dateOfBirth": "04/07/1992",
+        "startDate": "01/02/2022",
+        "department": "IT",
+        "street": "55 Maple St",
+        "city": "Chicago",
+        "state": "IL",
+        "zipCode": "60601"
+    },
+    {
+        "firstName": "Madison",
+        "lastName": "Brown",
+        "dateOfBirth": "09/09/1999",
+        "startDate": "01/03/2022",
+        "department": "Finance",
+        "street": "66 Cedar St",
+        "city": "Houston",
+        "state": "TX",
+        "zipCode": "77001"
+    },
+    {
+        "firstName": "Matthew",
+        "lastName": "Davis",
+        "dateOfBirth": "01/01/1995",
+        "startDate": "01/04/2022",
+        "department": "Operations",
+        "street": "77 Birch St",
+        "city": "Philadelphia",
+        "state": "PA",
+        "zipCode": "19019"
+    },
+    {
+        "firstName": "Olivia",
+        "lastName": "Miller",
+        "dateOfBirth": "03/30/1997",
+        "startDate": "01/05/2022",
+        "department": "Research and Development",
+        "street": "88 Oak St",
+        "city": "Phoenix",
+        "state": "AZ",
+        "zipCode": "85001"
+    },
+    {
+        "firstName": "Ethan",
+        "lastName": "Wilson",
+        "dateOfBirth": "07/11/1994",
+        "startDate": "01/06/2022",
+        "department": "Product Management",
+        "street": "99 Pine St",
+        "city": "San Diego",
+        "state": "CA",
+        "zipCode": "92109"
+    },
+    {
+        "firstName": "Isabella",
+        "lastName": "Moore",
+        "dateOfBirth": "12/25/1997",
+        "startDate": "01/07/2022",
+        "department": "Customer Service",
+        "street": "10 Elm St",
+        "city": "Austin",
+        "state": "TX",
+        "zipCode": "78701"
+    },
+    {
+        "firstName": "Jacob",
+        "lastName": "Taylor",
+        "dateOfBirth": "06/05/1990",
+        "startDate": "01/08/2022",
+        "department": "Marketing",
+        "street": "11 Cedar St",
+        "city": "Indianapolis",
+        "state": "IN",
+        "zipCode": "46201"
+    },
+    {
         "firstName": "Emma",
         "lastName": "Smith",
         "dateOfBirth": "05/03/1998",
