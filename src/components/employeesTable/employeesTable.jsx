@@ -59,7 +59,12 @@ export default function EmployeesTable () {
         console.log(ITEMS_PER_PAGE)
         console.log(currentPage)
         console.log(lastItemIndexDisplayed)
-        return slicedData
+        if (slicedData.length === 0) {
+            setCurrentPage(1) 
+            return slicedData  
+        } else {
+            return slicedData
+        }
     }, [employees, currentPage, ITEMS_PER_PAGE])
 
     return (
