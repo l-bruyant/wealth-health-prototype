@@ -4,6 +4,7 @@ import Root from '../../components/pages/root'
 import NewEmployeePage from '../../components/pages/newEmployeePage'
 import EmployeesListPage from '../../components/pages/employeesListPage'
 import "../../styles/root.css"
+import "../../styles/externalComponents.css"
 
 export const router = createBrowserRouter([
     {
