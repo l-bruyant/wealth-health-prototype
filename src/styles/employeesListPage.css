@@ -3,7 +3,8 @@ table {
 }
 
 .employees-list-page {
-    max-width: 1200px;
+    max-width: 1600px;
+    padding: 0px 16px;
     margin: auto;
 }
 
@@ -31,4 +32,41 @@ table {
     color: #666666;
     font-size: 10px;
     width: 11%;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    color: #666666;
+    font-size: 16px;
+    margin: 0px 0px 32px 0px;
+}
+
+.pagination-nav {
+    display: flex;
+}
+
+.pagination-container button {
+    background: none;
+    border: none;
+    color: #666666;
+    font-family: lato, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0px 4px;
+    cursor: pointer;
+}
+
+.pagination-indexNumber {
+    margin: 0px 4px;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pagination-active {
+    background-color: rgba(18, 149, 133, 0.12);
+    border-radius: 99px;
 }

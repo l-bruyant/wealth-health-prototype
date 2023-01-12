@@ -1,5 +1,171 @@
 [
     {
+        "firstName": "Emma",
+        "lastName": "Smith",
+        "dateOfBirth": "05/03/1998",
+        "startDate": "01/01/2022",
+        "department": "Sales",
+        "street": "22 Oak St",
+        "city": "New York",
+        "state": "NY",
+        "zipCode": "10001"
+    }, 
+    {
+        "firstName": "Michael",
+        "lastName": "Johnson",
+        "dateOfBirth": "12/12/1980",
+        "startDate": "01/05/2022",
+        "department": "Engineering",
+        "street": "33 Pine Ave",
+        "city": "San Francisco",
+        "state": "CA",
+        "zipCode": "94103"
+    },
+
+    {
+        "firstName": "Emily",
+        "lastName": "Williams",
+        "dateOfBirth": "02/28/1995",
+        "startDate": "01/15/2022",
+        "department": "Human Resources",
+        "street": "44 Elm St",
+        "city": "Los Angeles",
+        "state": "CA",
+        "zipCode": "90001"
+    },
+    {
+        "firstName": "Luca",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Luco",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Luce",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Luci",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucu",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucy",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucon",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucou",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucoi",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucky",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucen",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
+        "firstName": "Lucan",
+        "lastName": "Testing",
+        "dateOfBirth": "01/11/2023",
+        "startDate": "01/08/2023",
+        "department": "Marketing",
+        "street": "13 Str",
+        "city": "Pau",
+        "state": "AL",
+        "zipCode": "22444"
+    },
+    {
         "firstName": "Luc",
         "lastName": "Testing",
         "dateOfBirth": "01/11/2023",
