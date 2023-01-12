@@ -1,0 +1,34 @@
+table {
+    border-spacing: 0px;
+}
+
+.employees-list-page {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.employees-table {
+    margin: 32px 0px;
+    width: 100%;
+    border: solid #F2F2F2 1px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.employees-table thead th {
+    background-color: #F8FAFB;
+    color: #666666;
+    font-size: 10px;
+    font-weight: 400;
+}
+.employees-table tr {
+    height: 64px;
+}
+
+.employees-table td {
+    text-align: center;
+    border: none;
+    color: #666666;
+    font-size: 10px;
+    width: 11%;
+}
