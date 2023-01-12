@@ -1,6 +1,7 @@
 import React from 'react'
-import illustration from "../assets/img/business-woman.jpg"
-import RegisterForm from '../components/registerForm'
+import illustration from "../../assets/img/business-woman.jpg"
+import RegisterForm from '../registerForm'
+import "../../styles/newEmployeePage.css"
 
 /**
 *

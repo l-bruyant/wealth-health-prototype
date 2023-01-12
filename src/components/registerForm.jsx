@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { states } from "../data/statesList";
-import { jobs } from "../data/jobsList";
+import { states } from "../utils/data/statesList";
+import { jobs } from "../utils/data/jobsList";
 import { useNavigate } from 'react-router-dom'
 
 

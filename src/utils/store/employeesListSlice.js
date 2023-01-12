@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import mockedEmployees from '../../data/mockEmployees.json'
+import mockedEmployees from '../data/mockEmployees.json'
 
 export const employeesListSlice = createSlice({
     name: 'employeeList',
