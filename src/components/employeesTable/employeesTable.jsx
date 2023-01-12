@@ -27,6 +27,7 @@ export default function EmployeesTable () {
 
     function handlePaginationChange (e) {
         setITEMS_PER_PAGE(e.value)
+        setCurrentPage(1) 
     }
 
     const headers = [
@@ -56,15 +57,7 @@ export default function EmployeesTable () {
             firstItemIndexDisplayed,
             lastItemIndexDisplayed
         )
-        console.log(ITEMS_PER_PAGE)
-        console.log(currentPage)
-        console.log(lastItemIndexDisplayed)
-        if (slicedData.length === 0) {
-            setCurrentPage(1) 
-            return slicedData  
-        } else {
-            return slicedData
-        }
+        return slicedData  
     }, [employees, currentPage, ITEMS_PER_PAGE])
 
     return (
