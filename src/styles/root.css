@@ -99,6 +99,7 @@ header .active-nav
 {
 	background: rgb(54,203,158);
 	background: linear-gradient(90deg, rgba(54,203,158,1) 0%, rgba(56,194,194,1) 100%);
+  color:white
 }
 
 .grey-button

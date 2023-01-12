@@ -1,5 +1,5 @@
 import React from 'react'
-import EmployeesTable from '../employeesTable'
+import EmployeesTable from '../employeesTable/employeesTable'
 import "../../styles/employeesListPage.css"
 
 /**
