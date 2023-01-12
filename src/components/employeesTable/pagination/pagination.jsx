@@ -31,12 +31,12 @@ export default function Pagination ({ firstItemIndex, lastItemIndex, total=0, it
             <div className='pagination-nav'>
                 <button 
                     onClick={ () => onPageChange (currentPage - 1)} 
-                    disabled={currentPage === 1}
+                    hidden={currentPage === 1}
                 >Previous</button>
                     {paginationItems}
                 <button 
                     onClick={ () => onPageChange (currentPage + 1)} 
-                    disabled={currentPage === totalPages}
+                    hidden={currentPage === totalPages}
                 >Next</button>
             </div>
         </div>

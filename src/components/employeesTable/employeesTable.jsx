@@ -14,8 +14,9 @@ export default function EmployeesTable () {
     const [totalItems, setTotalItems] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [ITEMS_PER_PAGE, setITEMS_PER_PAGE] = useState(10)
+
     const firstItemIndexDisplayed = (currentPage - 1) * ITEMS_PER_PAGE
-    const lastItemIndexDisplayed = (currentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
+    const lastItemIndexDisplayed = (currentPage) * ITEMS_PER_PAGE
 
     const initialEmployeesList = useSelector(state => state.employeesList.value)
 
@@ -55,6 +56,9 @@ export default function EmployeesTable () {
             firstItemIndexDisplayed,
             lastItemIndexDisplayed
         )
+        console.log(ITEMS_PER_PAGE)
+        console.log(currentPage)
+        console.log(lastItemIndexDisplayed)
         return slicedData
     }, [employees, currentPage, ITEMS_PER_PAGE])
 
