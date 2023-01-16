@@ -99,11 +99,29 @@ header .active-nav
 {
 	background: rgb(54,203,158);
 	background: linear-gradient(90deg, rgba(54,203,158,1) 0%, rgba(56,194,194,1) 100%);
-  color:white
+	color:white
 }
 
 .grey-button
 {
 	background: #F8FAFB;
 	color: #666666;
+}
+
+@media screen and (max-width: 720px) {
+    header {
+		align-items: center;
+		justify-content: center;
+		height: 164px;
+	}
+	header .main-nav {
+		margin-left: 0px;
+		margin: 16px;
+	}
+	header .top-bar {
+		margin-left: -32px;
+	}
+	.form-column {
+		padding: 40px 16px;
+	}
 }

@@ -52,6 +52,11 @@ export default function RegisterForm () {
     const defaultStateOption = stateOptions[0];
     const jobOptions = jobs
     const defaultjobOption = jobOptions[0];
+    const [employeeState, setEmployeeState] = useState('AL')
+
+    function handleStateChange (e) {
+        setEmployeeState(e.value)
+    }
 
     const dispatch = useDispatch()
 
@@ -75,7 +80,8 @@ export default function RegisterForm () {
     // For form submission
     const handleSubmit = async e => {
         e.preventDefault()
-        const newEmployee = saveEmployee()
+        console.log(employeeState)
+        const newEmployee = saveEmployee(employeeState)
         dispatch(addEmployee(newEmployee))
         openModal()
     }
@@ -125,7 +131,7 @@ export default function RegisterForm () {
                         </div>
                         <div className='form-question' id='state-dropdown-wrapper'>
                             <label htmlFor='state'>STATE</label>
-                            <Dropdown name='state' id='state' required options={stateOptions} value={defaultStateOption} placeholder="Select option" />
+                            <Dropdown name='state' id='state' required onChange={handleStateChange} options={stateOptions} value={defaultStateOption} placeholder="Select option" />
                         </div>
                         <div className='form-question'>
                             <label htmlFor='zip-code'>ZIP CODE</label>

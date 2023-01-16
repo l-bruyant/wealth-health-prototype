@@ -3,6 +3,7 @@ import React, { useEffect, useState, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import TableHeader from './tableHeader/tableHeader'
 import Pagination from './pagination/pagination'
+import Search from './search/search'
 
 //dropdown
 import Dropdown from 'react-dropdown';
@@ -14,6 +15,8 @@ export default function EmployeesTable () {
     const [totalItems, setTotalItems] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
     const [ITEMS_PER_PAGE, setITEMS_PER_PAGE] = useState(10)
+    const [search, setSearch] = useState("")
+    const [sorting, setSorting] = useState ({ field: "startDateString", order: "asc", type: "date"})
 
     const firstItemIndexDisplayed = (currentPage - 1) * ITEMS_PER_PAGE
     const lastItemIndexDisplayed = (currentPage) * ITEMS_PER_PAGE
@@ -21,7 +24,7 @@ export default function EmployeesTable () {
     const initialEmployeesList = useSelector(state => state.employeesList.value)
 
     function createEmployeeKey (employee) {
-        const employeeKey = employee.firstName + employee.lastName + employee.dateOfBirth
+        const employeeKey = employee.firstName + employee.lastName + employee.dateOfBirth + Math.round(Math.random() * (99000 - 10000) + 10000)
         return employeeKey
     }
 
@@ -31,34 +34,57 @@ export default function EmployeesTable () {
     }
 
     const headers = [
-        { name: "FIRST NAME", field: "firstName" },
-        { name: "LAST NAME", field: "lastName" },
-        { name: "START DATE", field: "startDate" },
-        { name: "DEPARTMENT", field: "department" },
-        { name: "DATE OF BIRTH", field: "dateOfBirth" },
-        { name: "STREET", field: "street" },
-        { name: "CITY", field: "city" },
-        { name: "STATE", field: "state" },
-        { name: "ZIPCODE", field: "zipCode" },
+        { name: "FIRST NAME", field: "firstName", sortable: true },
+        { name: "LAST NAME", field: "lastName", sortable: true },
+        { name: "START DATE", field: "startDateString", sortable: true },
+        { name: "DEPARTMENT", field: "department", sortable: true },
+        { name: "DATE OF BIRTH", field: "dateOfBirthString", sortable: true },
+        { name: "STREET", field: "street", sortable: true },
+        { name: "CITY", field: "city", sortable: true },
+        { name: "STATE", field: "state", sortable: true },
+        { name: "ZIPCODE", field: "zipCode", sortable: true },
     ]
 
-    const paginationOptions = ['5', '10', '20']
+    const paginationOptions = ['2', '5', '10', '20']
 
-    const defaultPaginationOption = paginationOptions[1]
+    const defaultPaginationOption = paginationOptions[2]
 
     useEffect( () => {
         setEmployees(initialEmployeesList)
-    })
+    }, [])
 
     const employeesData = useMemo ( () => {
-        let computedEmployeesData = employees
+
+        let computedEmployeesData = Object.assign([], employees)
+
+        if(search){
+            computedEmployeesData = computedEmployeesData.filter(
+                employee =>
+                    Object.keys(employee).some(
+                            key => employee[key].toLowerCase().includes(search.toLowerCase())
+                        )
+            )
+        }
+
+        // sorting employees 
+        if (sorting.field) {
+            const reversed = sorting.order === "asc" ? 1 : -1
+            computedEmployeesData = computedEmployeesData.sort(
+                (a,b) => 
+                    reversed * a[sorting.field].localeCompare(b[sorting.field])) 
+        }
+
         setTotalItems(computedEmployeesData.length)
+
+        // current page slice
         let slicedData = computedEmployeesData.slice(
             firstItemIndexDisplayed,
             lastItemIndexDisplayed
         )
+
+        
         return slicedData  
-    }, [employees, currentPage, ITEMS_PER_PAGE])
+    }, [employees, currentPage, ITEMS_PER_PAGE, search, sorting])
 
     return (
         <>
@@ -70,11 +96,19 @@ export default function EmployeesTable () {
                 </div>
                 <div className='search-container'>
                     <label htmlFor='search'>Search</label>
-                    <input id="search" name="search" type="search" placeholder='search employee'/>
+                    <Search onSearch={ (value) => {
+                        setSearch(value)
+                        setCurrentPage(1)
+                    } }/>
                 </div>
             </div>
             <table className="employees-table">
-                <TableHeader headers={headers} />
+                <TableHeader 
+                    headers={headers} 
+                    onSorting={ (field, order) => {
+                        setSorting( {field, order} ) 
+                        setCurrentPage(1) 
+                    } } />
                 <tbody>
                     {employeesData.map ( employee => (<tr key={createEmployeeKey(employee)}>
                         <td> {employee.firstName} </td>
