@@ -151,6 +151,16 @@ tr:hover {
     margin: 0px 8px
 }
 
+.pagination-dots {
+    color: #c0c0c0;
+    cursor: default;
+    width: 10px;
+}
+
+.pagination-index-error {
+    color: #e74c3c;
+}
+
 @media screen and (max-width: 720px) {
     .table-options-area {
         height: 128px;
