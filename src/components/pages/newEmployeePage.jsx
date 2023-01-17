@@ -3,7 +3,7 @@ import "../../styles/pages/newEmployeePage.css"
 import React from 'react'
 
 import illustration from "../../assets/img/business-woman.jpg"
-import RegisterForm from '../registerForm'
+import RegisterForm from "../features/registerForm/registerForm"
 
 /**
 *

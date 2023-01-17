@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom';
 
-import { createEmployee } from "../utils/api/createEmployee";
-import { JOBS_LIST } from "../utils/static-data/JOBS_LIST";
-import { USA_STATES_LIST } from "../utils/static-data/USA_STATES_LIST";
-import { storeEmployee } from "../utils/store/employeesListSlice";
-import ExternalDatePicker from './libraries/externalDatePicker';
-import ExternalDropDown from './libraries/externalDropdown';
-import ExternalModal from './libraries/externalModal';
+import { createEmployee } from "../../../utils/api/createEmployee";
+import { JOBS_LIST } from "../../../utils/static-data/JOBS_LIST";
+import { USA_STATES_LIST } from "../../../utils/static-data/USA_STATES_LIST";
+import { storeEmployee } from "../../../utils/store/employeesListSlice";
+import ExternalDatePicker from '../../libraries/externalDatePicker';
+import ExternalDropDown from '../../libraries/externalDropdown';
+import ExternalModal from '../../libraries/externalModal';
 
 /**
 *

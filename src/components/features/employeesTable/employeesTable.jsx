@@ -4,7 +4,6 @@ import 'react-dropdown/style.css';
 import React, { useEffect, useMemo,useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import createRandomKey10000 from '../../../utils/functions/createRandomKey10000';
 import ExternalDropDown from '../../libraries/externalDropdown';
 import Pagination from './pagination/pagination'
 import Search from './search/search'
@@ -29,16 +28,16 @@ export default function EmployeesTable () {
         setCurrentPage(1) 
     }
 
-    const headers = [
-        { name: "FIRST NAME", field: "firstName", sortable: true },
-        { name: "LAST NAME", field: "lastName", sortable: true },
-        { name: "START DATE", field: "startDateString", sortable: true },
-        { name: "DEPARTMENT", field: "department", sortable: true },
-        { name: "DATE OF BIRTH", field: "dateOfBirthString", sortable: true },
-        { name: "STREET", field: "street", sortable: true },
-        { name: "CITY", field: "city", sortable: true },
-        { name: "STATE", field: "state", sortable: true },
-        { name: "ZIPCODE", field: "zipCode", sortable: true },
+    const tableSetup = [
+        { fieldName: "FIRST NAME", fieldValue: "firstName", fieldDisplay: "firstName" },
+        { fieldName: "LAST NAME", fieldValue: "lastName", fieldDisplay: "lastName"  },
+        { fieldName: "START DATE", fieldValue: "startDateString", fieldDisplay: "startDate" },
+        { fieldName: "DEPARTMENT", fieldValue: "department", fieldDisplay: "department" },
+        { fieldName: "DATE OF BIRTH", fieldValue: "dateOfBirthString", fieldDisplay: "dateOfBirth" },
+        { fieldName: "STREET", fieldValue: "street", fieldDisplay: "street" },
+        { fieldName: "CITY", fieldValue: "city", fieldDisplay: "city" },
+        { fieldName: "STATE", fieldValue: "state", fieldDisplay:  "state" },
+        { fieldName: "ZIPCODE", fieldValue: "zipCode", fieldDisplay: "zipCode" },
     ]
 
     const paginationOptions = ['2', '5', '10', '20']
@@ -101,22 +100,19 @@ export default function EmployeesTable () {
             </div>
             <table className="employees-table">
                 <TableHeader 
-                    headers={headers} 
+                    headers={tableSetup} 
                     onSorting={ (field, order) => {
                         setSorting( {field, order} ) 
                         setCurrentPage(1) 
                     } } />
                 <tbody>
-                    {employeesData.map ( employee => (<tr key={createRandomKey10000(employee.firstName)}>
-                        <td> {employee.firstName} </td>
-                        <td> {employee.lastName} </td>
-                        <td> {employee.startDate} </td>
-                        <td> {employee.department} </td>
-                        <td> {employee.dateOfBirth} </td>
-                        <td> {employee.street} </td>
-                        <td> {employee.city} </td>
-                        <td> {employee.state} </td>
-                        <td> {employee.zipCode} </td>
+                    {employeesData.map ( (employee, index) => (
+                    <tr key={"row" + index}>
+                        {tableSetup.map( (field) => (
+                            <td key={employee[field.fieldDisplay] + index}> 
+                                {employee[field.fieldDisplay]} 
+                            </td>
+                        ))}
                     </tr>
                     ))}
                 </tbody>
