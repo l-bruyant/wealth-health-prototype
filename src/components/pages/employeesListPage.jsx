@@ -13,8 +13,6 @@ import CustomTable from "../features/customTable/customTable"
 *
 */
 
-
-
 export default function EmployeesListPage () {
 
     const employeesTableSetup = [
@@ -34,6 +32,8 @@ export default function EmployeesListPage () {
                 <CustomTable 
                     data={useSelector(state => state.employeesList.value)} 
                     fieldsSetup={employeesTableSetup}
+                    defaultSortingField='startDateString'
+                    defaultSortingOrder='asc'
                     paginationOptions={['3', '5', '10', '20']}
                     defaultPaginationOption={'10'}
                 />

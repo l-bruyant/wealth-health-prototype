@@ -1,108 +1,80 @@
 /* eslint-disable react/prop-types */
-import "react-dropdown/style.css";
+import React, { useMemo,useState } from 'react'
 
-import React, { useEffect, useMemo, useState } from "react";
+import ExternalDropDown from '../../libraries/externalDropdown';
+import Pagination from './pagination/pagination'
+import Search from './search/search'
+import TableHeader from './tableHeader/tableHeader'
+import searchTable from './utils/searchTable';
+import sortTable from './utils/sortTable';
 
-import ExternalDropDown from "../../libraries/externalDropdown";
-import Pagination from "./pagination/pagination";
-import Search from "./search/search";
-import TableHeader from "./tableHeader/tableHeader";
+export default function CustomTable ({data, fieldsSetup, defaultSortingField, defaultSortingOrder, paginationOptions, defaultPaginationOption}) {
 
-export default function CustomTable({
-    data,
-    fieldsSetup,
-    paginationOptions,
-    defaultPaginationOption,
-}) {
-    const [items, setItems] = useState([]);
-    const [totalItems, setTotalItems] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(defaultPaginationOption);
-    const [search, setSearch] = useState("");
-    const [sorting, setSorting] = useState({
-        field: "startDateString",
-        order: "asc",
-        type: "date",
-    });
-    const firstItemIndexDisplayed = (currentPage - 1) * itemsPerPage;
-    const lastItemIndexDisplayed = currentPage * itemsPerPage;
+    const [currentPage, setCurrentPage] = useState(1)
+    const [itemsPerPage, setItemsPerPage] = useState(defaultPaginationOption)
+    const [search, setSearch] = useState("")
+    const [sorting, setSorting] = useState ({ field: defaultSortingField, order: defaultSortingOrder})
 
-    function handlePaginationChange(e) {
-        setItemsPerPage(e.value);
-        setCurrentPage(1);
-    }
-
-    useEffect(() => {
-        setItems(data);
-    }, []);
-
-    const tableData = useMemo(() => {
-        let computedTableData = Object.assign([], items);
-
+    const unSlicedData = useMemo(() => {
+        let itemsTable = Object.assign([], data)
         if (search) {
-            computedTableData = computedTableData.filter((item) =>
-                Object.keys(item).some((key) =>
-                    item[key].toLowerCase().includes(search.toLowerCase())
-                )
-            );
+            itemsTable = searchTable(itemsTable, search)
         }
-
         if (sorting.field) {
-            const reversed = sorting.order === "asc" ? 1 : -1;
-            computedTableData = computedTableData.sort(
-                (a, b) =>
-                    reversed * a[sorting.field].localeCompare(b[sorting.field])
-            );
+            itemsTable = sortTable(itemsTable, sorting.order, sorting.field)
         }
+        return itemsTable  
+    }, [data, search, sorting])
 
-        setTotalItems(computedTableData.length);
-
-        let slicedData = computedTableData.slice(
-            firstItemIndexDisplayed,
-            lastItemIndexDisplayed
-        );
-
-        return slicedData;
-    }, [items, currentPage, itemsPerPage, search, sorting]);
+    const slicedData = useMemo(() => {
+        const paginatedData = unSlicedData.slice(
+            (currentPage - 1) * itemsPerPage,
+            (currentPage) * itemsPerPage
+        )
+        return paginatedData  
+    }, [data, currentPage, itemsPerPage, search, sorting])
 
     return (
         <>
             <div className="table-options-area">
-                <div className="pagination-settings-container">
+                <div className='pagination-settings-container'>
                     Show
-                    <ExternalDropDown
-                        onChange={handlePaginationChange}
-                        name="pagination-settings"
-                        id="pagination-settings"
-                        options={paginationOptions}
+                    <ExternalDropDown 
+                        onChange={(e) => {
+                            setItemsPerPage(e.value)
+                            setCurrentPage(1) 
+                        }} 
+                        name='pagination-settings' 
+                        id='pagination-settings' 
+                        options={paginationOptions} 
                         value={defaultPaginationOption}
                     />
                     Results
                 </div>
-                <div className="search-container">
-                    <label htmlFor="search">Search</label>
-                    <Search
+                <div className='search-container'>
+                    <label htmlFor='search'>Search</label>
+                    <Search 
                         onSearch={(value) => {
-                            setSearch(value);
-                            setCurrentPage(1);
+                            setSearch(value)
+                            setCurrentPage(1)
                         }}
                     />
                 </div>
             </div>
             <table className="items-table">
-                <TableHeader
-                    headers={fieldsSetup}
+                <TableHeader 
+                    headers={fieldsSetup} 
                     onSorting={(field, order) => {
-                        setSorting({ field, order });
-                        setCurrentPage(1);
-                    }}
+                        setSorting( {field, order} ) 
+                        setCurrentPage(1) 
+                    }} 
                 />
                 <tbody>
-                    {tableData.map((item, index) => (
+                    {slicedData.map ( (item, index) => (
                         <tr key={"row" + index}>
-                            {fieldsSetup.map((field) => (
-                                <td key={item[field.fieldDisplay] + index}>
-                                    {item[field.fieldDisplay]}
+                            {fieldsSetup.map( (field, index) => (
+                                <td key={item[field.fieldDisplay] + index}> 
+                                    {item[field.fieldDisplay]} 
                                 </td>
                             ))}
                         </tr>
@@ -110,15 +82,15 @@ export default function CustomTable({
                 </tbody>
             </table>
             <div>
-                <Pagination
-                    total={totalItems}
-                    itemsPerPage={itemsPerPage}
-                    currentPage={currentPage}
-                    onPageChange={(page) => setCurrentPage(page)}
-                    firstItemIndex={firstItemIndexDisplayed + 1}
-                    lastItemIndex={firstItemIndexDisplayed + tableData.length}
+                <Pagination 
+                    total={unSlicedData.length}
+                    itemsPerPage = {itemsPerPage}
+                    currentPage = {currentPage}
+                    onPageChange = {page => setCurrentPage(page)}
+                    firstItemIndex = {(currentPage - 1) * itemsPerPage + 1}
+                    lastItemIndex = {(currentPage - 1) * itemsPerPage + slicedData.length}
                 />
             </div>
         </>
-    );
+    )
 }

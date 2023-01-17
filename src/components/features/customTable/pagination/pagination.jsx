@@ -19,7 +19,7 @@ export default function Pagination ({ firstItemIndex, lastItemIndex, total=0, it
         const pages = []
         if (totalPages === 1) {
             return ''
-        } else if (totalPages < 5) {
+        } else if (totalPages < 6) {
             for(let i=1; i <= totalPages; i++) {
                 pages.push(
                 <div className={(i==currentPage? 'pagination-indexNumber pagination-active':'pagination-indexNumber')} key={i}  onClick={() => onPageChange(i)}>
