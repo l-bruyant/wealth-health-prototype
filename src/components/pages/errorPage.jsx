@@ -1,8 +1,6 @@
 import React from 'react'
 import { useRouteError } from 'react-router-dom'
 
-import Header from '../header'
-
 /**
 *
 * Displayed by the router in case of wrong route
@@ -15,8 +13,6 @@ export default function ErrorPage() {
     const error = useRouteError()
     
     return (
-        <React.Fragment>
-            <Header />
             <main>
                 <div id="error-page">
                     <h2>Error</h2>
@@ -26,6 +22,5 @@ export default function ErrorPage() {
                     </p>
                 </div>
             </main> 
-        </React.Fragment>
     )
 }

@@ -2,7 +2,7 @@ import "../../styles/pages/employeesListPage.css"
 
 import React from 'react'
 
-import EmployeesTable from '../employeesTable/employeesTable'
+import EmployeesTable from "../features/employeesTable/employeesTable"
 
 /**
 *

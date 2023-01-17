@@ -3,10 +3,10 @@ import "../../styles/pages/root.css"
 import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 
+import Root from "../../components/layout/root"
 import EmployeesListPage from '../../components/pages/employeesListPage'
 import ErrorPage from '../../components/pages/errorPage'
 import NewEmployeePage from '../../components/pages/newEmployeePage'
-import Root from '../../components/pages/root'
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +27,11 @@ export const router = createBrowserRouter([
             {
                 path: 'new-employee',
                 element: <NewEmployeePage />,
+                errorElement: <ErrorPage />,
+            },
+            {
+                path: "*",
+                element: <ErrorPage />,
                 errorElement: <ErrorPage />,
             }
         ]

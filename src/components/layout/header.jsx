@@ -1,6 +1,7 @@
 import React from 'react'
-import logoWealthHealth from '../assets/img/healthWealthLogo.png'
 import { NavLink } from 'react-router-dom'
+
+import logoWealthHealth from '../../assets/img/healthWealthLogo.png'
 
 /**
 *

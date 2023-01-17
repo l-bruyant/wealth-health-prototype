@@ -5,7 +5,7 @@ import"../../styles/react-libraries/react-dropdown.css"
 import React from 'react'
 import Dropdown from 'react-dropdown';
 
-export default function ExternalDropDown ({name, id, onChange, options}) {
+export default function ExternalDropDown ({name, id, onChange, options, value=options[0]}) {
 
     return (
         <Dropdown 
@@ -13,7 +13,7 @@ export default function ExternalDropDown ({name, id, onChange, options}) {
             id={id} 
             onChange={onChange} 
             options={options} 
-            value={options[0]} 
+            value={value} 
         />
     )
 }

@@ -10,8 +10,6 @@ import { USA_STATES_LIST } from "../utils/static-data/USA_STATES_LIST";
 import { storeEmployee } from "../utils/store/employeesListSlice";
 import ExternalDatePicker from './libraries/externalDatePicker';
 import ExternalDropDown from './libraries/externalDropdown';
-//dropdown
-//modal
 import ExternalModal from './libraries/externalModal';
 
 /**
@@ -83,8 +81,7 @@ export default function RegisterForm () {
                         </div>
                         <div className='form-question' id='state-dropdown-wrapper'>
                             <label htmlFor='state'>STATE</label>
-                            <ExternalDropDown name='state' id='state' onChange={(e) =>
-                            setEmployeeState(e.value)} options={USA_STATES_LIST} />
+                            <ExternalDropDown name='state' id='state' onChange={(e) => setEmployeeState(e.value)} options={USA_STATES_LIST} />
                         </div>
                         <div className='form-question'>
                             <label htmlFor='zip-code'>ZIP CODE</label>

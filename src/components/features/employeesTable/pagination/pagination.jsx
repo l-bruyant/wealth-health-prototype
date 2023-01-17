@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useMemo,useState } from 'react'
 
 export default function Pagination ({ firstItemIndex, lastItemIndex, total=0, itemsPerPage=10, currentPage=1, onPageChange}) {
 

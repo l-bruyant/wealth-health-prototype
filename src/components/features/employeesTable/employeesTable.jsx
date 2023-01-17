@@ -2,10 +2,10 @@
 import 'react-dropdown/style.css';
 
 import React, { useEffect, useMemo,useState } from 'react'
-//dropdown
-import Dropdown from 'react-dropdown';
 import { useSelector } from 'react-redux'
 
+import createRandomKey10000 from '../../../utils/functions/createRandomKey10000';
+import ExternalDropDown from '../../libraries/externalDropdown';
 import Pagination from './pagination/pagination'
 import Search from './search/search'
 import TableHeader from './tableHeader/tableHeader'
@@ -15,22 +15,17 @@ export default function EmployeesTable () {
     const [employees, setEmployees ] = useState([])
     const [totalItems, setTotalItems] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
-    const [ITEMS_PER_PAGE, setITEMS_PER_PAGE] = useState(10)
+    const [itemsPerPage, setItemsPerPage] = useState(10)
     const [search, setSearch] = useState("")
     const [sorting, setSorting] = useState ({ field: "startDateString", order: "asc", type: "date"})
 
-    const firstItemIndexDisplayed = (currentPage - 1) * ITEMS_PER_PAGE
-    const lastItemIndexDisplayed = (currentPage) * ITEMS_PER_PAGE
+    const firstItemIndexDisplayed = (currentPage - 1) * itemsPerPage
+    const lastItemIndexDisplayed = (currentPage) * itemsPerPage
 
     const initialEmployeesList = useSelector(state => state.employeesList.value)
 
-    function createEmployeeKey (employee) {
-        const employeeKey = employee.firstName + employee.lastName + employee.dateOfBirth + Math.round(Math.random() * (99000 - 10000) + 10000)
-        return employeeKey
-    }
-
     function handlePaginationChange (e) {
-        setITEMS_PER_PAGE(e.value)
+        setItemsPerPage(e.value)
         setCurrentPage(1) 
     }
 
@@ -85,14 +80,14 @@ export default function EmployeesTable () {
 
         
         return slicedData  
-    }, [employees, currentPage, ITEMS_PER_PAGE, search, sorting])
+    }, [employees, currentPage, itemsPerPage, search, sorting])
 
     return (
         <>
             <div className="table-options-area">
                 <div className='pagination-settings-container'>
                     Show
-                    <Dropdown onChange={handlePaginationChange} name='pagination-settings' id='pagination-settings' options={paginationOptions} value={defaultPaginationOption}/>
+                    <ExternalDropDown onChange={handlePaginationChange} name='pagination-settings' id='pagination-settings' options={paginationOptions} value={defaultPaginationOption}/>
                     Results
                 </div>
                 <div className='search-container'>
@@ -112,7 +107,7 @@ export default function EmployeesTable () {
                         setCurrentPage(1) 
                     } } />
                 <tbody>
-                    {employeesData.map ( employee => (<tr key={createEmployeeKey(employee)}>
+                    {employeesData.map ( employee => (<tr key={createRandomKey10000(employee.firstName)}>
                         <td> {employee.firstName} </td>
                         <td> {employee.lastName} </td>
                         <td> {employee.startDate} </td>
@@ -129,7 +124,7 @@ export default function EmployeesTable () {
             <div>
                 <Pagination 
                     total={totalItems}
-                    itemsPerPage = {ITEMS_PER_PAGE}
+                    itemsPerPage = {itemsPerPage}
                     currentPage = {currentPage}
                     onPageChange = {page => setCurrentPage(page)}
                     firstItemIndex = {firstItemIndexDisplayed + 1}
