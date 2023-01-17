@@ -11,13 +11,13 @@ table {
 .employees-table {
     margin: 32px 0px;
     width: 100%;
-    border: solid #F2F2F2 1px;
+    border: solid #f2f2f2 1px;
     border-radius: 4px;
     background-color: white;
 }
 
 .employees-table thead th {
-    background-color: #F8FAFB;
+    background-color: #f8fafb;
     color: #666666;
     font-size: 10px;
     font-weight: 400;
@@ -34,7 +34,7 @@ table {
     flex-direction: row;
     width: 100%;
     word-wrap: break-word;
-    word-break: break-all
+    word-break: break-all;
 }
 
 .sort-icon {
@@ -109,11 +109,15 @@ tr:hover {
     justify-content: space-between;
     align-items: center;
     font-size: 16px;
-	color: white;
-	background: rgb(54,203,158);
-	background: linear-gradient(90deg, rgba(54,203,158,1) 0%, rgba(56,194,194,1) 100%);
-	border-radius: 4px;
-	box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    color: white;
+    background: rgb(54, 203, 158);
+    background: linear-gradient(
+        90deg,
+        rgba(54, 203, 158, 1) 0%,
+        rgba(56, 194, 194, 1) 100%
+    );
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
     height: 96px;
     margin: 32px 0px 0px 0px;
     flex-wrap: wrap;
@@ -126,18 +130,18 @@ tr:hover {
 }
 
 .search-container input {
-    border: solid 1px #F2F2F2;
-	height: 32px;
-	border-radius: 4px;
-	font-size: 10px;
-	font-family: lato, Arial, Helvetica, sans-serif;
-	padding: 0px 8px;
-	color: #666666;
-    margin: 0px 16px
+    border: solid 1px #f2f2f2;
+    height: 32px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-family: lato, Arial, Helvetica, sans-serif;
+    padding: 0px 8px;
+    color: #666666;
+    margin: 0px 16px;
 }
 
 .search-container label {
-    margin: 0px 16px
+    margin: 0px 16px;
 }
 
 .pagination-settings-container {
@@ -148,7 +152,7 @@ tr:hover {
 }
 
 .pagination-settings-container select {
-    margin: 0px 8px
+    margin: 0px 8px;
 }
 
 .pagination-dots {
@@ -166,13 +170,13 @@ tr:hover {
         height: 128px;
     }
     .table-header-text {
-        min-width: 90px
+        min-width: 90px;
     }
     .employees-table {
         max-width: 100%;
         overflow-x: scroll;
         position: relative;
-        display: block
+        display: block;
     }
     .pagination-container {
         font-size: 10px;

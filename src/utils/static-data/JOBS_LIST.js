@@ -1,4 +1,4 @@
-export const jobs = [
+export const JOBS_LIST = [
     'Sales', 
     'Marketing', 
     'Engineering', 

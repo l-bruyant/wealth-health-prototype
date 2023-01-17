@@ -1,25 +1,18 @@
-import React, { useState } from "react";
-import { states } from "../utils/data/statesList";
-import { jobs } from "../utils/data/jobsList";
-import { useNavigate } from 'react-router-dom'
-
-
-//datepicker
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-
-//dropdown
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 
-//modal
-import Modal from 'react-modal';
-
-import { saveEmployee } from "../utils/saveEmployee";
-
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux'
-import { addEmployee } from "../utils/store/employeesListSlice";
+import { Link } from 'react-router-dom';
 
+import { createEmployee } from "../utils/api/createEmployee";
+import { JOBS_LIST } from "../utils/static-data/JOBS_LIST";
+import { USA_STATES_LIST } from "../utils/static-data/USA_STATES_LIST";
+import { storeEmployee } from "../utils/store/employeesListSlice";
+import ExternalDatePicker from './libraries/externalDatePicker';
+import ExternalDropDown from './libraries/externalDropdown';
+//dropdown
+//modal
+import ExternalModal from './libraries/externalModal';
 
 /**
 *
@@ -29,73 +22,34 @@ import { addEmployee } from "../utils/store/employeesListSlice";
 *
 */
 
-Modal.setAppElement('#root');
-const customModalStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    },
-};
 
 export default function RegisterForm () {
 
-    // For custom date picker
-    const [startStartDate, setStartStartDate] = useState(new Date());
-    const [birthStart, setBirthStartDate] = useState(new Date());
-
-    // For custom select
-    const stateOptions = states
-    const defaultStateOption = stateOptions[0];
-    const jobOptions = jobs
-    const defaultjobOption = jobOptions[0];
-    const [employeeState, setEmployeeState] = useState('AL')
-
-    function handleStateChange (e) {
-        setEmployeeState(e.value)
-    }
-
     const dispatch = useDispatch()
+    const [employeeState, setEmployeeState] = useState('AL')
+    const [modalIsOpen, setModalIsOpen] = React.useState(false)
 
-    // For Modal 
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-    const navigate = useNavigate()
-
-    function goToEmployeesList() {
-        navigate('/employees-list') 
-    }
-
-    function openModal() {
-        setIsOpen(true);
-    }
-
-    function closeModal() {
-        setIsOpen(false);
-        location.reload() 
-    }
-    
-    // For form submission
-    const handleSubmit = async e => {
+    async function handleSubmit (e) {
         e.preventDefault()
-        console.log(employeeState)
-        const newEmployee = saveEmployee(employeeState)
-        dispatch(addEmployee(newEmployee))
-        openModal()
+        const newEmployee = createEmployee(employeeState)
+        dispatch(storeEmployee(newEmployee))
+        setModalIsOpen(true)
+    }
+
+    function closeModalRefresh() {
+        setModalIsOpen(false);
+        location.reload() 
     }
 
     return (
         <div className='register-form-wrapper'>
-            <h2>
-                Fill employee information to add them to the database
-            </h2>
+
+            <h2>Fill employee information to add them to the database</h2>
+
             <form id='newEmployeeForm' onSubmit={handleSubmit}>
+
                 <div className='form-group'>
-                    <h3 className='form-cat-title'>
-                        IDENTITY
-                    </h3>
+                    <h3 className='form-cat-title'>IDENTITY</h3>
                     <div className='form-questions-group'>
                         <div className='form-question'>
                             <label htmlFor='first-name'>FIRST NAME</label>
@@ -107,19 +61,17 @@ export default function RegisterForm () {
                         </div>
                         <div className='form-question'>
                             <label htmlFor='start-date'>START DATE</label>
-                            <DatePicker name='start-date' id='start-date' selected={startStartDate} onChange={(date = Date) => setStartStartDate(date)} />
+                            <ExternalDatePicker name='start-date' id='start-date' />
                         </div>
                         <div className='form-question'>
                             <label htmlFor='date-of-birth'>DATE OF BIRTH</label>
-                            <DatePicker name='date-of-birth' id='date-of-birth' selected={birthStart} onChange={(date = Date) => setBirthStartDate(date)} />
+                            <ExternalDatePicker name='date-of-birth' id='date-of-birth' />
                         </div>
                     </div>
-                    
                 </div>
+
                 <div className='form-group'>
-                    <h3 className='form-cat-title'>
-                        ADDRESS
-                    </h3>
+                    <h3 className='form-cat-title'>ADDRESS</h3>
                     <div className='form-questions-group'>
                         <div className='form-question'>
                             <label htmlFor='street'>STREET</label>
@@ -131,39 +83,48 @@ export default function RegisterForm () {
                         </div>
                         <div className='form-question' id='state-dropdown-wrapper'>
                             <label htmlFor='state'>STATE</label>
-                            <Dropdown name='state' id='state' required onChange={handleStateChange} options={stateOptions} value={defaultStateOption} placeholder="Select option" />
+                            <ExternalDropDown name='state' id='state' onChange={(e) =>
+                            setEmployeeState(e.value)} options={USA_STATES_LIST} />
                         </div>
                         <div className='form-question'>
                             <label htmlFor='zip-code'>ZIP CODE</label>
                             <input type='text' name='zip-code' id='zip-code' required/>
                         </div>
                     </div>
-                    
                 </div>
+
                 <div className='form-group'>
-                    <h3 className='form-cat-title'>
-                        WORK DETAILS
-                    </h3>
+                    <h3 className='form-cat-title'>WORK DETAILS</h3>
                     <div className='form-questions-group'>
                         <div className='form-question wide-questions' id='department-dropdown-wrapper'>
                             <label htmlFor='department'>DEPARTMENT</label>
-                            <Dropdown name='department' id='department' required options={jobOptions} value={defaultjobOption} placeholder="Select option" />
+                            <ExternalDropDown name='department' id='department' options={JOBS_LIST} />
                         </div>
                     </div>
-                    
                 </div>
+
                 <button className='form-save-button'>Save</button>
+                
             </form>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customModalStyles} contentLabel="User registered" >
-                <div className="modal-content-wrapper">
-                    <div className='modal-text'>Employee correctly registered 👏</div>
-                    <div className='modal-text'>What do you want to do next?</div>
-                    <div className="modal-buttons-wrapper">
-                        <button onClick={goToEmployeesList} className="modal-button green-button">See the employees list</button>
-                        <button onClick={closeModal} className="modal-button grey-button">Add an other new employee</button>
+
+            <ExternalModal 
+                modalIsOpen={modalIsOpen} 
+                onClose={closeModalRefresh} 
+                contentLabel="User registered" 
+                modalContentHTML={
+                    <div className="modal-content-wrapper">
+                        <div className='modal-text'>Employee correctly registered 👏</div>
+                        <div className='modal-text'>What do you want to do next?</div>
+                        <div className="modal-buttons-wrapper">
+                            <Link to={'/employees-list'} className="modal-button green-button">
+                            See the employees list</Link>
+                            <button onClick={closeModalRefresh} className="modal-button grey-button">Add an other new employee</button>
+                        </div>
                     </div>
-                </div>
-            </Modal>
+                }    
+            >
+            </ExternalModal>
+
         </div>
     )
 }

@@ -1,16 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit'
-import employeesListReducer from './employeesListSlice'
-import sessionStorage from 'redux-persist/es/storage/session'
 import {
-    persistReducer,
     FLUSH,
-    REHYDRATE,
     PAUSE,
     PERSIST,
+    persistReducer,
     PURGE,
     REGISTER,
+    REHYDRATE,
 } from 'redux-persist'
+import sessionStorage from 'redux-persist/es/storage/session'
+
+import { configureStore } from '@reduxjs/toolkit'
 import { combineReducers } from '@reduxjs/toolkit'
+
+import employeesListReducer from './employeesListSlice'
 
 const persistConfig = {
     key: 'root',

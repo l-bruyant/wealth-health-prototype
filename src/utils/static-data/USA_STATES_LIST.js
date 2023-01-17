@@ -1,4 +1,4 @@
-export const states = [
+export const USA_STATES_LIST = [
     {
         "label": "Alabama",
         "value": "AL"

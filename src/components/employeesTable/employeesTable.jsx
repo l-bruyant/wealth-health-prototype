@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-key */
-import React, { useEffect, useState, useMemo } from 'react'
-import { useSelector } from 'react-redux'
-import TableHeader from './tableHeader/tableHeader'
-import Pagination from './pagination/pagination'
-import Search from './search/search'
+import 'react-dropdown/style.css';
 
+import React, { useEffect, useMemo,useState } from 'react'
 //dropdown
 import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
+import { useSelector } from 'react-redux'
+
+import Pagination from './pagination/pagination'
+import Search from './search/search'
+import TableHeader from './tableHeader/tableHeader'
 
 export default function EmployeesTable () {
 
@@ -96,9 +97,10 @@ export default function EmployeesTable () {
                 </div>
                 <div className='search-container'>
                     <label htmlFor='search'>Search</label>
-                    <Search onSearch={ (value) => {
-                        setSearch(value)
-                        setCurrentPage(1)
+                    <Search 
+                        onSearch={ (value) => {
+                            setSearch(value)
+                            setCurrentPage(1)
                     } }/>
                 </div>
             </div>
