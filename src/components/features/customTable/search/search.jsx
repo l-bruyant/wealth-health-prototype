@@ -11,7 +11,7 @@ export default function Search ({onSearch}) {
         <input 
             type="text"
             className="search-field"
-            placeholder="Find an employee"
+            placeholder="Search the table"
             value={search}
             onChange={(e) => onInputChange (e.target.value)}
         />

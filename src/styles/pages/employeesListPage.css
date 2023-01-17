@@ -8,7 +8,7 @@ table {
     margin: auto;
 }
 
-.employees-table {
+.items-table {
     margin: 32px 0px;
     width: 100%;
     border: solid #f2f2f2 1px;
@@ -16,7 +16,7 @@ table {
     background-color: white;
 }
 
-.employees-table thead th {
+.items-table thead th {
     background-color: #f8fafb;
     color: #666666;
     font-size: 10px;
@@ -41,7 +41,7 @@ table {
     margin: 0px 4px;
 }
 
-.employees-table tr {
+.items-table tr {
     height: 64px;
     display: flex;
     flex-direction: row;
@@ -51,7 +51,7 @@ tr:hover {
     font-weight: 800;
 }
 
-.employees-table td {
+.items-table td {
     text-align: center;
     border: none;
     color: #666666;
@@ -172,7 +172,7 @@ tr:hover {
     .table-header-text {
         min-width: 90px;
     }
-    .employees-table {
+    .items-table {
         max-width: 100%;
         overflow-x: scroll;
         position: relative;
