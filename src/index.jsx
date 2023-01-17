@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom'
-import { router } from './utils/router/router';
 import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
+import { RouterProvider } from 'react-router-dom'
 import { persistStore } from 'redux-persist'
-import { store } from './utils/store/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
-// import mockedUser from '../dataMocks/mock_user.json'
+import { router } from './utils/router/router';
+import { store } from './utils/store/store'
 
 let persistor = persistStore(store)
 

@@ -108,6 +108,16 @@ header .active-nav
 	color: #666666;
 }
 
+#error-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 80px 0px;
+	font-family: lato, Arial, Helvetica, sans-serif;
+	color: #666666;
+}
+
 @media screen and (max-width: 720px) {
     header {
 		align-items: center;
