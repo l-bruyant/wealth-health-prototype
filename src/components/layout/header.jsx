@@ -14,36 +14,34 @@ import logoWealthHealth from '../../assets/img/healthWealthLogo.png'
 export default function Header() {
 	return (
 		<header>
-			<div className="top-bar">
-				<div className="logo">
+			<div className='top-bar'>
+				<div className='logo'>
 					<img
-						className="logo-image"
+						className='logo-image'
 						src={logoWealthHealth}
-						alt="Wealth Health logo"
+						alt='Wealth Health logo'
 					/>
-					<h1 className="logo-title">Wealth Health</h1>
+					<h1 className='logo-title'>Wealth Health</h1>
 				</div>
 			</div>
-			<nav className="main-nav">
+			<nav className='main-nav'>
 				<div>
 					<NavLink
-						to="employees-list"
+						to='employees-list'
 						className={({ isActive }) => {
-							return isActive
-								? 'main-nav-item active-nav'
-								: 'main-nav-item'
-						}}>
+							return isActive ? 'main-nav-item active-nav' : 'main-nav-item'
+						}}
+					>
 						Employees
 					</NavLink>
 				</div>
 				<div>
 					<NavLink
-						to="new-employee"
+						to='new-employee'
 						className={({ isActive }) => {
-							return isActive
-								? 'main-nav-item active-nav'
-								: 'main-nav-item'
-						}}>
+							return isActive ? 'main-nav-item active-nav' : 'main-nav-item'
+						}}
+					>
 						Create new
 					</NavLink>
 				</div>

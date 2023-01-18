@@ -16,18 +16,14 @@ const customModalStyles = {
 	}
 }
 
-export default function ExternalModal({
-	modalIsOpen,
-	onClose,
-	contentLabel,
-	modalContentHTML
-}) {
+export default function ExternalModal({ modalIsOpen, onClose, contentLabel, modalContentHTML }) {
 	return (
 		<Modal
 			isOpen={modalIsOpen}
 			onRequestClose={onClose}
 			style={customModalStyles}
-			contentLabel={contentLabel}>
+			contentLabel={contentLabel}
+		>
 			{modalContentHTML}
 		</Modal>
 	)

@@ -38,139 +38,141 @@ export default function RegisterForm() {
 	}
 
 	return (
-		<div className="register-form-wrapper">
+		<div className='register-form-wrapper'>
 			<h2>Fill employee information to add them to the database</h2>
 
 			<form
-				id="newEmployeeForm"
-				onSubmit={handleSubmit}>
-				<div className="form-group">
-					<h3 className="form-cat-title">IDENTITY</h3>
-					<div className="form-questions-group">
-						<div className="form-question">
-							<label htmlFor="first-name">FIRST NAME</label>
+				id='newEmployeeForm'
+				onSubmit={handleSubmit}
+			>
+				<div className='form-group'>
+					<h3 className='form-cat-title'>IDENTITY</h3>
+					<div className='form-questions-group'>
+						<div className='form-question'>
+							<label htmlFor='first-name'>FIRST NAME</label>
 							<input
-								type="text"
-								name="first-name"
-								id="first-name"
+								type='text'
+								name='first-name'
+								id='first-name'
 								required
 							/>
 						</div>
-						<div className="form-question">
-							<label htmlFor="last-name">LAST NAME</label>
+						<div className='form-question'>
+							<label htmlFor='last-name'>LAST NAME</label>
 							<input
-								type="text"
-								name="last-name"
-								id="last-name"
+								type='text'
+								name='last-name'
+								id='last-name'
 								required
 							/>
 						</div>
-						<div className="form-question">
-							<label htmlFor="start-date">START DATE</label>
+						<div className='form-question'>
+							<label htmlFor='start-date'>START DATE</label>
 							<ExternalDatePicker
-								name="start-date"
-								id="start-date"
+								name='start-date'
+								id='start-date'
 							/>
 						</div>
-						<div className="form-question">
-							<label htmlFor="date-of-birth">DATE OF BIRTH</label>
+						<div className='form-question'>
+							<label htmlFor='date-of-birth'>DATE OF BIRTH</label>
 							<ExternalDatePicker
-								name="date-of-birth"
-								id="date-of-birth"
+								name='date-of-birth'
+								id='date-of-birth'
 							/>
 						</div>
 					</div>
 				</div>
 
-				<div className="form-group">
-					<h3 className="form-cat-title">ADDRESS</h3>
-					<div className="form-questions-group">
-						<div className="form-question">
-							<label htmlFor="street">STREET</label>
+				<div className='form-group'>
+					<h3 className='form-cat-title'>ADDRESS</h3>
+					<div className='form-questions-group'>
+						<div className='form-question'>
+							<label htmlFor='street'>STREET</label>
 							<input
-								type="text"
-								name="street"
-								id="street"
+								type='text'
+								name='street'
+								id='street'
 								required
 							/>
 						</div>
-						<div className="form-question">
-							<label htmlFor="city">CITY</label>
+						<div className='form-question'>
+							<label htmlFor='city'>CITY</label>
 							<input
-								type="text"
-								name="city"
-								id="city"
+								type='text'
+								name='city'
+								id='city'
 								required
 							/>
 						</div>
 						<div
-							className="form-question"
-							id="state-dropdown-wrapper">
-							<label htmlFor="state">STATE</label>
+							className='form-question'
+							id='state-dropdown-wrapper'
+						>
+							<label htmlFor='state'>STATE</label>
 							<ExternalDropDown
-								name="state"
-								id="state"
+								name='state'
+								id='state'
 								onChange={(e) => setEmployeeState(e.value)}
 								options={USA_STATES_LIST}
 							/>
 						</div>
-						<div className="form-question">
-							<label htmlFor="zip-code">ZIP CODE</label>
+						<div className='form-question'>
+							<label htmlFor='zip-code'>ZIP CODE</label>
 							<input
-								type="text"
-								name="zip-code"
-								id="zip-code"
+								type='text'
+								name='zip-code'
+								id='zip-code'
 								required
 							/>
 						</div>
 					</div>
 				</div>
 
-				<div className="form-group">
-					<h3 className="form-cat-title">WORK DETAILS</h3>
-					<div className="form-questions-group">
+				<div className='form-group'>
+					<h3 className='form-cat-title'>WORK DETAILS</h3>
+					<div className='form-questions-group'>
 						<div
-							className="form-question wide-questions"
-							id="department-dropdown-wrapper">
-							<label htmlFor="department">DEPARTMENT</label>
+							className='form-question wide-questions'
+							id='department-dropdown-wrapper'
+						>
+							<label htmlFor='department'>DEPARTMENT</label>
 							<ExternalDropDown
-								name="department"
-								id="department"
+								name='department'
+								id='department'
 								options={JOBS_LIST}
 							/>
 						</div>
 					</div>
 				</div>
 
-				<button className="form-save-button">Save</button>
+				<button className='form-save-button'>Save</button>
 			</form>
 
 			<ExternalModal
 				modalIsOpen={modalIsOpen}
 				onClose={closeModalRefresh}
-				contentLabel="User registered"
+				contentLabel='User registered'
 				modalContentHTML={
-					<div className="modal-content-wrapper">
-						<div className="modal-text">
-							Employee correctly registered 👏
-						</div>
-						<div className="modal-text">
-							What do you want to do next?
-						</div>
-						<div className="modal-buttons-wrapper">
+					<div className='modal-content-wrapper'>
+						<div className='modal-text'>Employee correctly registered 👏</div>
+						<div className='modal-text'>What do you want to do next?</div>
+						<div className='modal-buttons-wrapper'>
 							<Link
 								to={'/employees-list'}
-								className="modal-button green-button">
+								className='modal-button green-button'
+							>
 								See the employees list
 							</Link>
 							<button
 								onClick={closeModalRefresh}
-								className="modal-button grey-button">
+								className='modal-button grey-button'
+							>
 								Add an other new employee
 							</button>
 						</div>
 					</div>
-				}></ExternalModal>
+				}
+			></ExternalModal>
 		</div>
 	)
 }

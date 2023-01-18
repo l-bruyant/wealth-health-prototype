@@ -7,10 +7,7 @@ export default function TableHeader({ headers, onSorting }) {
 	const [sortingOrder, setSortingOrder] = useState('asc')
 
 	const onSortingChange = (fieldValue) => {
-		const order =
-			fieldValue === sortingField && sortingOrder === 'asc'
-				? 'desc'
-				: 'asc'
+		const order = fieldValue === sortingField && sortingOrder === 'asc' ? 'desc' : 'asc'
 		setSortingField(fieldValue)
 		setSortingOrder(order)
 		onSorting(fieldValue, order)
@@ -21,14 +18,13 @@ export default function TableHeader({ headers, onSorting }) {
 			<tr>
 				{headers.map(({ fieldName, fieldValue }) => (
 					<th
-						className="table-header-text"
+						className='table-header-text'
 						key={fieldName}
-						onClick={() => onSortingChange(fieldValue)}>
+						onClick={() => onSortingChange(fieldValue)}
+					>
 						<div>{fieldName}</div>
 						{sortingField && sortingField === fieldValue && (
-							<div className="sort-icon">
-								{sortingOrder === 'asc' ? '🔽' : '🔼'}
-							</div>
+							<div className='sort-icon'>{sortingOrder === 'asc' ? '🔽' : '🔼'}</div>
 						)}
 					</th>
 				))}

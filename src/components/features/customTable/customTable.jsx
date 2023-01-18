@@ -36,32 +36,29 @@ export default function CustomTable({
 	}, [data, search, sorting])
 
 	const slicedData = useMemo(() => {
-		const paginatedData = unSlicedData.slice(
-			(currentPage - 1) * itemsPerPage,
-			currentPage * itemsPerPage
-		)
+		const paginatedData = unSlicedData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
 		return paginatedData
 	}, [data, currentPage, itemsPerPage, search, sorting])
 
 	return (
 		<>
-			<div className="table-options-area">
-				<div className="pagination-settings-container">
+			<div className='table-options-area'>
+				<div className='pagination-settings-container'>
 					Show
 					<ExternalDropDown
 						onChange={(e) => {
 							setItemsPerPage(e.value)
 							setCurrentPage(1)
 						}}
-						name="pagination-settings"
-						id="pagination-settings"
+						name='pagination-settings'
+						id='pagination-settings'
 						options={paginationOptions}
 						value={defaultPaginationOption}
 					/>
 					Results
 				</div>
-				<div className="search-container">
-					<label htmlFor="search">Search</label>
+				<div className='search-container'>
+					<label htmlFor='search'>Search</label>
 					<Search
 						onSearch={(value) => {
 							setSearch(value)
@@ -70,7 +67,7 @@ export default function CustomTable({
 					/>
 				</div>
 			</div>
-			<table className="items-table">
+			<table className='items-table'>
 				<TableHeader
 					headers={fieldsSetup}
 					onSorting={(field, order) => {
@@ -82,9 +79,7 @@ export default function CustomTable({
 					{slicedData.map((item, index) => (
 						<tr key={'row' + index}>
 							{fieldsSetup.map((field, index) => (
-								<td key={item[field.fieldDisplay] + index}>
-									{item[field.fieldDisplay]}
-								</td>
+								<td key={item[field.fieldDisplay] + index}>{item[field.fieldDisplay]}</td>
 							))}
 						</tr>
 					))}
@@ -97,9 +92,7 @@ export default function CustomTable({
 					currentPage={currentPage}
 					onPageChange={(page) => setCurrentPage(page)}
 					firstItemIndex={(currentPage - 1) * itemsPerPage + 1}
-					lastItemIndex={
-						(currentPage - 1) * itemsPerPage + slicedData.length
-					}
+					lastItemIndex={(currentPage - 1) * itemsPerPage + slicedData.length}
 				/>
 			</div>
 		</>

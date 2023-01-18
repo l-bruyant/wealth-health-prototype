@@ -1,44 +1,29 @@
-import {
-    FLUSH,
-    PAUSE,
-    PERSIST,
-    persistReducer,
-    PURGE,
-    REGISTER,
-    REHYDRATE
-} from "redux-persist";
-import sessionStorage from "redux-persist/es/storage/session";
+import { FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE } from 'redux-persist'
+import sessionStorage from 'redux-persist/es/storage/session'
 
-import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers } from '@reduxjs/toolkit'
 
-import employeesListReducer from "./employeesListSlice";
+import employeesListReducer from './employeesListSlice'
 
 const persistConfig = {
-    key: "root",
-    version: 1,
-    storage: sessionStorage
-};
+	key: 'root',
+	version: 1,
+	storage: sessionStorage
+}
 
 const reducer = combineReducers({
-    employeesList: employeesListReducer
-});
+	employeesList: employeesListReducer
+})
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(persistConfig, reducer)
 
 export const store = configureStore({
-    reducer: persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [
-                    FLUSH,
-                    REHYDRATE,
-                    PAUSE,
-                    PERSIST,
-                    PURGE,
-                    REGISTER
-                ]
-            }
-        })
-});
+	reducer: persistedReducer,
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+			}
+		})
+})
