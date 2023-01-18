@@ -8,7 +8,7 @@ import TableHeader from './tableHeader/tableHeader'
 import searchTable from './utils/searchTable';
 import sortTable from './utils/sortTable';
 
-export default function CustomTable ({data, fieldsSetup, defaultSortingField, defaultSortingOrder, paginationOptions, defaultPaginationOption}) {
+export default function CustomTable ({data, fieldsSetup, defaultSortingField, defaultSortingOrder, paginationOptions=['10'], defaultPaginationOption}) {
 
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage, setItemsPerPage] = useState(defaultPaginationOption)

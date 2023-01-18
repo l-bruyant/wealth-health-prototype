@@ -20,7 +20,6 @@ import ExternalModal from '../../libraries/externalModal';
 *
 */
 
-
 export default function RegisterForm () {
 
     const dispatch = useDispatch()

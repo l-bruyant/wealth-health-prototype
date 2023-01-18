@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import"../../styles/react-libraries/react-modal.css"
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
