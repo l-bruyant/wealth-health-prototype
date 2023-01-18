@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import '../../styles/react-libraries/react-modal.css'
 
+import PropTypes from 'prop-types'
 import React from 'react'
 import Modal from 'react-modal'
 
@@ -27,4 +27,11 @@ export default function ExternalModal({ modalIsOpen, onClose, contentLabel, moda
 			{modalContentHTML}
 		</Modal>
 	)
+}
+
+ExternalModal.propTypes = {
+	modalIsOpen: PropTypes.bool,
+	onClose: PropTypes.func,
+	contentLabel: PropTypes.string,
+	modalContentHTML: PropTypes.object
 }

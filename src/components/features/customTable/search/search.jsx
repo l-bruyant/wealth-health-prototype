@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types'
 import React from 'react'
 
 export default function Search({ onSearch }) {
@@ -10,4 +10,8 @@ export default function Search({ onSearch }) {
 			onChange={(e) => onSearch(e.target.value)}
 		/>
 	)
+}
+
+Search.propTypes = {
+	onSearch: PropTypes.func
 }

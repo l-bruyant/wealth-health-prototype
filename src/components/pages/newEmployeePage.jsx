@@ -7,9 +7,9 @@ import RegisterForm from '../features/registerForm/registerForm'
 
 /**
  *
- * Display the structure of the new employee page
- *
  * @function NewEmployeePage
+ *
+ * @returns the NewEmployeePage component
  *
  */
 

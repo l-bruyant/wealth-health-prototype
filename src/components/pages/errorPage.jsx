@@ -3,9 +3,9 @@ import { useRouteError } from 'react-router-dom'
 
 /**
  *
- * Displayed by the router in case of wrong route
- *
  * @function ErrorPage
+ *
+ * @returns the ErrorPage component
  *
  */
 

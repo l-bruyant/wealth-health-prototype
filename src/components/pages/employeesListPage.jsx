@@ -7,9 +7,9 @@ import CustomTable from '../features/customTable/customTable'
 
 /**
  *
- * Display the structure of the employees list page
- *
  * @function EmployeesListPage
+ *
+ * @returns the EmployeesListPage component
  *
  */
 

@@ -14,20 +14,21 @@ import ExternalModal from '../../libraries/externalModal'
 
 /**
  *
- * Displays a registration form
+ * @function RegisterForm
  *
- * @function registerForm
+ * @returns the RegisterForm component that lets users create a new employee
  *
  */
 
 export default function RegisterForm() {
 	const dispatch = useDispatch()
 	const [employeeState, setEmployeeState] = useState('AL')
+	const [employeeDepartment, setEmployeeDepartment] = useState('Sales')
 	const [modalIsOpen, setModalIsOpen] = React.useState(false)
 
 	async function handleSubmit(e) {
 		e.preventDefault()
-		const newEmployee = createEmployee(employeeState)
+		const newEmployee = createEmployee(employeeState, employeeDepartment)
 		dispatch(storeEmployee(newEmployee))
 		setModalIsOpen(true)
 	}
@@ -139,6 +140,7 @@ export default function RegisterForm() {
 							<ExternalDropDown
 								name='department'
 								id='department'
+								onChange={(e) => setEmployeeDepartment(e.value)}
 								options={JOBS_LIST}
 							/>
 						</div>

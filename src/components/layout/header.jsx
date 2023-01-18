@@ -5,9 +5,9 @@ import logoWealthHealth from '../../assets/img/healthWealthLogo.png'
 
 /**
  *
- * Displays the page Header
- *
  * @function Header
+ *
+ * @returns the Header component
  *
  */
 

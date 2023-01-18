@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types'
 import React from 'react'
 import { useEffect, useMemo, useState } from 'react'
 
@@ -120,4 +120,13 @@ export default function Pagination({ firstItemIndex, lastItemIndex, total = 0, i
 			</div>
 		</div>
 	)
+}
+
+Pagination.propTypes = {
+	firstItemIndex: PropTypes.number,
+	lastItemIndex: PropTypes.number,
+	total: PropTypes.number,
+	itemsPerPage: PropTypes.string,
+	currentPage: PropTypes.number,
+	onPageChange: PropTypes.func
 }

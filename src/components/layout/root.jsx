@@ -5,9 +5,9 @@ import Header from './header'
 
 /**
  *
- * Outlet is used to render child routes inside the component, see router for more context
- *
  * @function Root
+ *
+ * @returns the Root component
  *
  */
 
