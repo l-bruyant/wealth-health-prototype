@@ -2,7 +2,7 @@
 import sortTable from './sortTable'
 
 describe('sortTable', () => {
-	it('sorts the table by ascending order', () => {
+	it('sorts the table by ascending order of a specific field value', () => {
 		const dataTable = [
 			{ name: 'Jane', age: '24' },
 			{ name: 'John', age: '32' },
@@ -15,7 +15,7 @@ describe('sortTable', () => {
 			{ name: 'John', age: '32' }
 		])
 	})
-	it('sorts the table by descending order', () => {
+	it('sorts the table by descending order of a specific field value', () => {
 		const dataTable = [
 			{ name: 'Jane', age: '24' },
 			{ name: 'John', age: '32' },
