@@ -1,46 +1,46 @@
 #newEmployeeForm .Dropdown-control {
-    border: solid 1px #f2f2f2;
-    height: 32px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-family: lato, Arial, Helvetica, sans-serif;
-    padding: 0px 8px;
-    color: #666666;
-    display: flex;
-    align-items: center;
+	border: solid 1px #f2f2f2;
+	height: 32px;
+	border-radius: 4px;
+	font-size: 10px;
+	font-family: lato, Arial, Helvetica, sans-serif;
+	padding: 0px 8px;
+	color: #666666;
+	display: flex;
+	align-items: center;
 }
 
 #newEmployeeForm .Dropdown-option {
-    font-size: 10px;
-    font-family: lato, Arial, Helvetica, sans-serif;
-    color: #666666;
+	font-size: 10px;
+	font-family: lato, Arial, Helvetica, sans-serif;
+	color: #666666;
 }
 
 .table-options-area .Dropdown-control {
-    border: solid 1px #f2f2f2;
-    height: 32px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-family: lato, Arial, Helvetica, sans-serif;
-    padding: 0px 8px;
-    color: #666666;
-    display: flex;
-    align-items: center;
-    width: 64px;
-    margin: 0px 16px;
-    justify-content: center;
-    padding: 0px 8px 0px 0px;
+	border: solid 1px #f2f2f2;
+	height: 32px;
+	border-radius: 4px;
+	font-size: 10px;
+	font-family: lato, Arial, Helvetica, sans-serif;
+	padding: 0px 8px;
+	color: #666666;
+	display: flex;
+	align-items: center;
+	width: 64px;
+	margin: 0px 16px;
+	justify-content: center;
+	padding: 0px 8px 0px 0px;
 }
 
 .table-options-area .Dropdown-menu {
-    width: 64px;
-    margin: 0px 16px;
-    text-align: center;
+	width: 64px;
+	margin: 0px 16px;
+	text-align: center;
 }
 
 .table-options-area .Dropdown-option {
-    font-size: 10px;
-    font-family: lato, Arial, Helvetica, sans-serif;
-    color: #666666;
-    text-align: center;
+	font-size: 10px;
+	font-family: lato, Arial, Helvetica, sans-serif;
+	color: #666666;
+	text-align: center;
 }
