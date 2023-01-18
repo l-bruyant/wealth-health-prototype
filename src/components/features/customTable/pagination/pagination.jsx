@@ -14,6 +14,16 @@ export default function Pagination({ firstItemIndex, lastItemIndex, total = 0, i
 		}
 	}, [total, itemsPerPage])
 
+	const createPaginationItem = (i, currentPage) => (
+		<div
+			className={i === currentPage ? 'pagination-indexNumber pagination-active' : 'pagination-indexNumber'}
+			key={i}
+			onClick={() => onPageChange(i)}
+		>
+			{i}
+		</div>
+	)
+
 	const paginationItems = useMemo(() => {
 		const pages = []
 
@@ -21,27 +31,11 @@ export default function Pagination({ firstItemIndex, lastItemIndex, total = 0, i
 			return ''
 		} else if (totalPages < 6) {
 			for (let i = 1; i <= totalPages; i++) {
-				pages.push(
-					<div
-						className={i == currentPage ? 'pagination-indexNumber pagination-active' : 'pagination-indexNumber'}
-						key={i}
-						onClick={() => onPageChange(i)}
-					>
-						{i}
-					</div>
-				)
+				pages.push(createPaginationItem(i, currentPage))
 			}
 		} else if (currentPage < 4) {
 			for (let i = 1; i <= 4; i++) {
-				pages.push(
-					<div
-						className={i == currentPage ? 'pagination-indexNumber pagination-active' : 'pagination-indexNumber'}
-						key={i}
-						onClick={() => onPageChange(i)}
-					>
-						{i}
-					</div>
-				)
+				pages.push(createPaginationItem(i, currentPage))
 			}
 			pages.push(
 				<div
@@ -51,25 +45,9 @@ export default function Pagination({ firstItemIndex, lastItemIndex, total = 0, i
 					...
 				</div>
 			)
-			pages.push(
-				<div
-					className='pagination-indexNumber'
-					key={totalPages}
-					onClick={() => onPageChange(totalPages)}
-				>
-					{totalPages}
-				</div>
-			)
+			pages.push(createPaginationItem(totalPages, currentPage))
 		} else if (currentPage > totalPages - 3) {
-			pages.push(
-				<div
-					className='pagination-indexNumber'
-					key={1}
-					onClick={() => onPageChange(1)}
-				>
-					{1}
-				</div>
-			)
+			pages.push(createPaginationItem(1, currentPage))
 			pages.push(
 				<div
 					className='pagination-indexNumber pagination-dots'
@@ -79,15 +57,7 @@ export default function Pagination({ firstItemIndex, lastItemIndex, total = 0, i
 				</div>
 			)
 			for (let i = totalPages - 3; i <= totalPages; i++) {
-				pages.push(
-					<div
-						className={i == currentPage ? 'pagination-indexNumber pagination-active' : 'pagination-indexNumber'}
-						key={i}
-						onClick={() => onPageChange(i)}
-					>
-						{i}
-					</div>
-				)
+				pages.push(createPaginationItem(i, currentPage))
 			}
 		} else if (totalPages > 1) {
 			pages.push(
@@ -108,15 +78,7 @@ export default function Pagination({ firstItemIndex, lastItemIndex, total = 0, i
 				</div>
 			)
 			for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-				pages.push(
-					<div
-						className={i == currentPage ? 'pagination-indexNumber pagination-active' : 'pagination-indexNumber'}
-						key={i}
-						onClick={() => onPageChange(i)}
-					>
-						{i}
-					</div>
-				)
+				pages.push(createPaginationItem(i, currentPage))
 			}
 			pages.push(
 				<div
@@ -126,15 +88,7 @@ export default function Pagination({ firstItemIndex, lastItemIndex, total = 0, i
 					...
 				</div>
 			)
-			pages.push(
-				<div
-					className='pagination-indexNumber'
-					key={totalPages}
-					onClick={() => onPageChange(totalPages)}
-				>
-					{totalPages}
-				</div>
-			)
+			pages.push(createPaginationItem(totalPages, currentPage))
 		}
 
 		return pages
