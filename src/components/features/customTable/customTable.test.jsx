@@ -1,4 +1,6 @@
-import { fireEvent, render } from '@testing-library/react'
+/* eslint-disable no-undef */
+
+import { render } from '@testing-library/react'
 import React from 'react'
 
 import CustomTable from './CustomTable'
@@ -25,7 +27,6 @@ describe('CustomTable', () => {
 				defaultPaginationOption={'2'}
 			/>
 		)
-		// check if the table rendered correctly
 		expect(container.querySelector('table')).toBeTruthy()
 	})
 })
@@ -33,15 +34,16 @@ describe('CustomTable', () => {
 describe('CustomTable', () => {
 	it('should render data, fieldsSetup, paginationOptions and defaultPaginationOption', () => {
 		const data = [
-			{ name: 'John', age: 25 },
-			{ name: 'Jane', age: 30 }
+			{ name: 'John', age: '25' },
+			{ name: 'Jane', age: '30' }
 		]
 		const fieldsSetup = [
-			{ fieldName: 'Name', fieldValue: 'name', fieldDisplay: 'name' },
-			{ fieldName: 'Age', fieldValue: 'age', fieldDisplay: 'age' }
+			{ fieldName: 'NAME', fieldValue: 'name', fieldDisplay: 'name' },
+			{ fieldName: 'AGE', fieldValue: 'age', fieldDisplay: 'age' }
 		]
 		const paginationOptions = ['2', '5', '10']
 		const defaultPaginationOption = '5'
+
 		const { getByText } = render(
 			<CustomTable
 				data={data}
@@ -50,11 +52,13 @@ describe('CustomTable', () => {
 				defaultPaginationOption={defaultPaginationOption}
 			/>
 		)
-
-		expect(getByText('John')).toBeInTheDocument()
-		expect(getByText('Jane')).toBeInTheDocument()
-		expect(getByText('2')).toBeInTheDocument()
-		expect(getByText('5')).toBeInTheDocument()
-		expect(getByText('10')).toBeInTheDocument()
+		expect(getByText('NAME')).toBeTruthy()
+		expect(getByText('AGE')).toBeTruthy()
+		expect(getByText('John')).toBeTruthy()
+		expect(getByText('Jane')).toBeTruthy()
+		expect(getByText('25')).toBeTruthy()
+		expect(getByText('30')).toBeTruthy()
+		expect(getByText('5')).toBeTruthy()
+		expect(getByText('Showing 1 to 2 of 2 entries')).toBeTruthy()
 	})
 })
