@@ -6,7 +6,7 @@ Waiting for review
 
 ## 2. Project pitch
 
-HR employees management app
+HR employees management app  
 Main features :
 
 -   Create an employee
