@@ -5,6 +5,17 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Dropdown from 'react-dropdown'
 
+/**
+ *
+ * The goal of this wrapper is to setup the external library component
+ * in a single place for easier maintenance
+ *
+ * @function ExternalDropDown
+ *
+ * @returns a wrapper that contains the react-dropdown library component
+ *
+ */
+
 export default function ExternalDropDown({ name, id, onChange, options, value = options[0] }) {
 	return (
 		<Dropdown

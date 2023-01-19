@@ -16,6 +16,17 @@ const customModalStyles = {
 	}
 }
 
+/**
+ *
+ * The goal of this wrapper is to setup the external library component
+ * in a single place for easier maintenance
+ *
+ * @function ExternalModal
+ *
+ * @returns a wrapper that contains the react-modal library component
+ *
+ */
+
 export default function ExternalModal({ modalIsOpen, onClose, contentLabel, modalContentHTML }) {
 	return (
 		<Modal

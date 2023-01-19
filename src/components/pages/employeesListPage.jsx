@@ -7,9 +7,12 @@ import CustomTable from '../features/customTable/customTable'
 
 /**
  *
- * @function EmployeesListPage
+ * The goal of this wrapper is to setup the external library component
+ * in a single place for easier maintenance
  *
- * @returns the EmployeesListPage component
+ * @function ExternalDatePicker
+ *
+ * @returns a wrapper that contains the react-datepicker library component
  *
  */
 

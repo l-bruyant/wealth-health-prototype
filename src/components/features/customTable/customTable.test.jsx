@@ -6,7 +6,7 @@ import React from 'react'
 import CustomTable from './CustomTable'
 
 describe('CustomTable', () => {
-	it('should display the data', () => {
+	it('should display the dataw', () => {
 		const data = [
 			{ name: 'John', age: '25' },
 			{ name: 'Jane', age: '30' }
