@@ -21,7 +21,7 @@ export default function Header() {
 						src={logoWealthHealth}
 						alt='Wealth Health logo'
 					/>
-					<h1 className='logo-title'>Wealth Health</h1>
+					<h1 className='logo-title'>Wealth Health | HRNet</h1>
 				</div>
 			</div>
 			<nav className='main-nav'>
