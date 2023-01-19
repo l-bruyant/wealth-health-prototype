@@ -3,7 +3,7 @@ import '../../styles/pages/employeesListPage.css'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import CustomTable from '../features/customTable/customTable'
+import ExternalTable from '../libraries/externalTable'
 
 /**
  *
@@ -31,7 +31,7 @@ export default function EmployeesListPage() {
 
 	return (
 		<div className='employees-list-page'>
-			<CustomTable
+			<ExternalTable
 				data={useSelector((state) => state.employeesList.value)}
 				fieldsSetup={employeesTableSetup}
 				defaultSortingField='startDateString'
