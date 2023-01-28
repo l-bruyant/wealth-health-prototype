@@ -35,7 +35,7 @@ export default function RegisterForm() {
 
 	function closeModalRefresh() {
 		setModalIsOpen(false)
-		location.reload()
+		window.location.reload()
 	}
 
 	return (

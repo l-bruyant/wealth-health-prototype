@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import MOCK_EMPLOYEES_LIST from '../static-data/MOCK_EMPLOYEES_LIST.json'
+// import MOCK_EMPLOYEES_LIST from '../static-data/MOCK_EMPLOYEES_LIST.json'
 
 export const employeesListSlice = createSlice({
 	name: 'employeeList',
 	initialState: {
-		value: MOCK_EMPLOYEES_LIST
+		value: []
 	},
 	reducers: {
 		storeEmployee: (state, action) => {
